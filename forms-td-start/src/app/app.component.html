@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <button class="btn btn-primary" (click)="suggestUserName()">
+        Suggest Name
+      </button>
       <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <div id="user-data">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <input 
@@ -32,6 +35,7 @@
               </span>
           </div>
         </div>
+        <p *ngIf="!userData.valid && userData.touched">use data invalid!</p>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <select 
@@ -51,6 +55,14 @@
             [(ngModel)]="answer"></textarea>
         </div>
         <p>Your reply: {{ answer }}</p>
+        <div class="radio" *ngFor="let gender of genders">
+          <input 
+            type="radio"
+            name="gender"
+            [value]="gender"
+            ngModel>
+            {{ gender }}
+        </div>
         <button 
           class="btn btn-primary" 
           type="submit"
