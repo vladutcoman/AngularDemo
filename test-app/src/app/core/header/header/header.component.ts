@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { AuthService } from 'src/app/auth/auth.service';
 
